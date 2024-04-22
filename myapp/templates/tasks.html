@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>TASK PENDING</h1>
+    <ul>
+        {% for tarea in tasks %}
+            <li>
+                <a href="{% url 'task_details' tarea.id %}">
+                    {% if tarea.important %}
+                        <strong>{{ tarea.title }}</strong>
+                    {% else %}
+                        {{ tarea.title }}
+                    {% endif %}
+                    <p>{{ tarea.description }}</p>
+                    <p>{{ tarea.user.username }}</p> 
+                </a> 
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
